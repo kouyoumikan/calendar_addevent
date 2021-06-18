@@ -6,6 +6,9 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.google.gms:google-services:4.3.4' // 追加
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // 追加
+        //+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0' // 追加
     }
 }
 

@@ -100,9 +100,25 @@ class _CalendarState extends State<Calendar> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-//                headerStyle: HeaderStyle(
-//                  formatButtonVisible: false
-//                ),
+              ),
+              //右上にあるカレンダー表示の切り替えボタンのカスタマイズ
+              headerStyle: HeaderStyle(
+                formatButtonVisible: true,
+                titleCentered: true,
+                formatButtonShowsNext: false,
+                formatButtonDecoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                formatButtonTextStyle: TextStyle(
+                  color: Colors.white,
+                ),
+//                leftChevronVisible: false, // 左上の矢印を非表示
+//                rightChevronVisible: false, // 右上の矢印を非表示
+                headerPadding: EdgeInsets.symmetric(
+                  horizontal: 5.0,
+                  vertical: 1.0
+                ),
               ),
               // カレンダーのイベント数を数字で表示するようにカスタマイズ
               calendarBuilders: CalendarBuilders(
@@ -112,69 +128,79 @@ class _CalendarState extends State<Calendar> {
                   }
                 },
               ),
+//              calendarBuilders: CalendarBuilders(
+//                selectedBuilder: (context, date, events) => Container(
+//                    margin: const EdgeInsets.all(4.0),
+//                    alignment: Alignment.center,
+//                    decoration: BoxDecoration(
+//                        color: Theme.of(context).primaryColor,
+//                        borderRadius: BorderRadius.circular(10.0)),
+//                    child: Text(
+//                      date.day.toString(),
+//                      style: TextStyle(color: Colors.white),
+//                    )),
+//                holidayBuilder: (context, date, events) => Container(
+//                    margin: const EdgeInsets.all(4.0),
+//                    alignment: Alignment.center,
+//                    decoration: BoxDecoration(
+//                        color: Colors.orange,
+//                        borderRadius: BorderRadius.circular(10.0)),
+//                    child: Text(
+//                      date.day.toString(),
+//                      style: TextStyle(color: Colors.white),
+//                    )),
+//              ),
             ),
-//            headerStyle: HeaderStyle(
-//              formatButtonVisible: true,
-//              titleCentered: true,
-//              formatButtonShowsNext: false,
-//              formatButtonDecoration: BoxDecoration(
-//                color: Colors.blue,
-//                borderRadius: BorderRadius.circular(5.0),
-//              ),
-//              formatButtonTextStyle: TextStyle(
-//                color: Colors.white,
-//              ),
-//            ),
-//            ..._getEventsfromDay(selectedDay).map(
-//              (Event event) => ListTile(
-//            title: Text(
-//              event.title,
-//            ),
-//          ),
-//        ),
           ],
         ),
       ),
 //      floatingActionButton: FloatingActionButton.extended(
 //        onPressed: () => showDialog(
-//        context: context,
-//        builder: (context) => AlertDialog(
-//          title: Text("Add Event"),
-//          content: TextFormField(
-//            controller: _eventController,
+//          context: context,
+//          builder: (context) => AlertDialog( // ボタン押下後、ダイアログの表示
+//            title: Text("Add Event"),
+//            content: TextFormField( // テキストフィールド
+//              controller: _eventController,
+//            ),
+//            actions: [
+//              TextButton(
+//                child: Text("Cancel"),
+//                onPressed: () => Navigator.pop(context),
+//              ),
+//              TextButton(
+//                child: Text("Ok"),
+//                onPressed: () {
+//                  if (_eventController.text.isEmpty) {
+//
+//                  } else {
+//                    if (selectedEvents[selectedDay] != null) {
+//                      selectedEvents[selectedDay]!.add(
+//                        Event(title: _eventController.text),
+//                      );
+//                    } else {
+//                      selectedEvents[selectedDay] = [
+//                        Event(title: _eventController.text)
+//                      ];
+//                    }
+//
+//                  }
+//                  Navigator.pop(context);
+//                  _eventController.clear();
+//                  setState((){});
+//                  return;
+//                },
+//              ),
+//            ],
 //          ),
 //        ),
+//        label: Text("Add Event"),
+//        icon: Icon(Icons.add),
 //      ),
-//      actions: [
-//        TextButton(
-//          child: Text("Cancel"),
-//          onPressed: () => Navigator.pop(context),
-//        ),
-//        TextButton(
-//          child: Text("Ok"),
-//          onPressed: () {
-//          if (_eventController.text.isEmpty) {
-//
-//          } else {
-//            if (selectedEvents[selectedDay] != null) {
-//              selectedEvents[selectedDay].add(
-//              Event(title: _eventController.text),
-//            );
-//            } else {
-//              selectedEvents[selectedDay] = [
-//              Event(title: _eventController.text)
-//            ];
-//            }
-//
-//          }
-//          Navigator.pop(context);
-//          _eventController.clear();
-//          setState((){});
-//          return;
-//        },
-//      ),
-//    ],
-//    ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        //onPressed: () => Navigator.pushNamed(context, '/add_event'),
+        onPressed: () => Navigator.of(context).pushNamed("/add_event"),
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:calendar_addevent/pages/home.dart';
 import 'package:calendar_addevent/pages/calendar.dart';
+import 'package:calendar_addevent/pages/add_event.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         //'/': (context) => MainPage(), // ホーム画面
         '/home': (context) => Home(), // ホーム画面
-        '/calendar': (context) => Calendar(),// カレンダー画面
-        //'/event': (context) => ,
+        '/calendar': (context) => Calendar(), // カレンダー画面
+        //'/add_event': (context) => AddEvent(), // カレンダー入力画面
       },
     );
   }
